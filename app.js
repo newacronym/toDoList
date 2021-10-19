@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb+srv://admin-harshit:Test123@cluster0.snews.mongodb.net/todolistDB", {
+mongoose.connect("mongodb+srv://admin-harshit:Test123@cluster0.snews.mongodb.net/ todolistDB", {
   useNewUrlParser: true
 });
 
@@ -124,6 +124,11 @@ app.get("/:customListName", function(req, res) {
     }
   });
 });
-app.listen(3000, function() {
-  console.log("The server is live on port 3000");
+
+let port = process.env.PORT;
+if(port==null || port==""){
+  port = 3000;
+}
+app.listen(port, function() {
+  console.log("The server is live");
 });
